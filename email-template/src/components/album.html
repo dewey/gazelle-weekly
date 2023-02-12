@@ -1,0 +1,29 @@
+<tr class="pb-6">
+  <td class="w-40">
+    <img class="aspect-square rounded-md max-w-full" src="{{ artwork_url }}" alt="The album cover for { album }} from {{ artist }}">
+  </td>
+  <td class="pl-3">
+    <ul class="list-none pl-0">
+      <li class="text-lg font-bold"><a href="{{ url }}">{{ album }} ({{ release_year }})</a></li>
+      <li>{{ artist }}</li>
+    </ul>
+    This album was tagged with:
+    {{#tags}}
+    <ul class="list-none pl-0 mt-0">
+      {{#each . }}
+      <li class="text-gray-400 inline-block">{{ . }}</li>
+      {{/each}}
+    </ul>
+    {{/tags}}
+    {{#urls}}
+    <ul class="list-none pl-0">
+      {{#each . }}
+      <li><a href="{{ url }}" alt="Listen to {{ album }} on Apple Music"><component src="apple_music_badge.html"></component></a></li>
+      {{/each}}
+    </ul>
+    {{/urls}}
+  </td>
+</tr>
+<tr role="separator">
+  <td class="leading-4">&zwj;</td>
+</tr>

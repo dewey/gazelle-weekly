@@ -1,0 +1,41 @@
+---
+bodyClass: bg-gray-postmark-lighter
+---
+
+<extends src="src/layouts/main.html">
+  <block name="template">
+    <table class="email-wrapper w-full bg-gray-postmark-lighter font-sans">
+      <tr>
+        <td align="center">
+          <table class="email-content w-full">
+            <tr>
+              <td class="email-body w-full">
+                <table align="center" class="email-body_inner w-[570px] bg-white mx-auto sm:w-full">
+                  <tr>
+                    <td class="p-[45px]">
+                      <div class="text-base">
+                        <h1 class="mt-0 text-2xl font-bold text-left text-gray-postmark-darker">
+                          {{ title }}
+                        </h1>
+                        <p class="mt-1.5 mb-6 text-base leading-6 text-gray-postmark-dark">
+                          Here's the top 10 albums users on Redacted were interested in this week.
+                        </p>
+                        <table class="w-full mb-[21px]">
+                          {{#albums}}
+                          {{#each . }}
+                          <component src="src/components/album.html"></component>
+                          {{/each}}
+                          {{/albums}}
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </block>
+</extends>
