@@ -41,9 +41,17 @@ func main() {
 	}
 
 	// Initialize clients and services
-	gazelleClient := gazelle.NewClient(nil, *gazelleAPIToken, *gazelleBaseURL)
+	gazelleClient, err := gazelle.NewClient(nil, *gazelleAPIToken, *gazelleBaseURL)
+	if err != nil {
+		level.Error(logger).Log("msg", "error initializing gazelle client", "err", err)
+		return
+	}
 	amClient := applemusic.NewClient(ctx, logger, nil)
-	emailerClient := email.NewClient(*postmarkAPIToken, *toEmail, *fromEmail)
+	emailerClient, err := email.NewClient(*postmarkAPIToken, *toEmail, *fromEmail)
+	if err != nil {
+		level.Error(logger).Log("msg", "error initializing gazelle client", "err", err)
+		return
+	}
 	sendingService := sending.NewSendingService(logger, emailerClient, gazelleClient)
 
 	result, err := gazelleClient.GetUniqueTop10(ctx, "week")

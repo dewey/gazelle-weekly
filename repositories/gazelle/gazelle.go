@@ -16,16 +16,20 @@ type Client struct {
 	BaseURL string
 }
 
-func NewClient(client *http.Client, token string, baseURL string) *Client {
+func NewClient(client *http.Client, token string, baseURL string) (*Client, error) {
 	if client == nil {
 		client = http.DefaultClient
+	}
+
+	if token == "" || baseURL == "" {
+		return nil, errors.New("token or baseURL can't be empty on client initialization")
 	}
 
 	return &Client{
 		client:  client,
 		token:   token,
 		BaseURL: baseURL,
-	}
+	}, nil
 }
 
 // GetUniqueTop10 is deduplicating the Top 10, as different encodings are distinct entries in the list

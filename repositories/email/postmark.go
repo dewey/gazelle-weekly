@@ -2,6 +2,7 @@ package email
 
 import (
 	"context"
+	"errors"
 	"net/http"
 
 	"github.com/mattevans/postmark-go"
@@ -13,7 +14,10 @@ type Client struct {
 	fromEmail, toEmail string
 }
 
-func NewClient(token string, toEmail, fromEmail string) *Client {
+func NewClient(token string, toEmail, fromEmail string) (*Client, error) {
+	if token == "" || toEmail == "" || fromEmail == "" {
+		return nil, errors.New("token, toEmail or fromEmail can't be empty on client initialization")
+	}
 	auth := &http.Client{
 		Transport: &postmark.AuthTransport{Token: token},
 	}
@@ -23,7 +27,7 @@ func NewClient(token string, toEmail, fromEmail string) *Client {
 		token:     token,
 		fromEmail: fromEmail,
 		toEmail:   toEmail,
-	}
+	}, nil
 }
 
 func (c *Client) Send(ctx context.Context, subject string, title string, variables []TemplateVariables) error {
