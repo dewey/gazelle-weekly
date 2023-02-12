@@ -55,7 +55,6 @@ func (c *Client) GetUniqueTop10(ctx context.Context, period string) ([]Result, e
 }
 
 func (c *Client) GetTop10(ctx context.Context, period string) ([]Result, error) {
-	fmt.Println("get top 10")
 	// Sanitizing available input values according to API
 	var details string
 	switch period {

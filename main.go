@@ -25,7 +25,7 @@ func main() {
 
 	fs := flag.NewFlagSet("gazelle-weekly", flag.ContinueOnError)
 	var (
-		postmarkAPIToken = fs.String("postmark-api-token", "", "The Postmark.com API token")
+		postmarkAPIToken = fs.String("postmark-api-token", "", "The Postmark API token")
 		fromEmail        = fs.String("from-email", "", "The email address the weekly update should be sent from. This has to match the Postmark verified address.")
 		gazelleAPIToken  = fs.String("gazelle-api-token", "", "The Gazelle API token")
 		gazelleBaseURL   = fs.String("gazelle-base-url", "", "The Gazelle base url")
