@@ -18,3 +18,10 @@ Run `go build` and execute the binary in a cron job, with the correct environmen
 
 ## Screenshot
 
+A summary like that will land in your email inbox every time the script is executed.
+
+![screenshot of weekly summary email](docs/Screenshot 2023-02-12 at 16.59.26.png@2x.png)
+
+## Contributing
+
+If you want to update the email templates you have to run `npm run build ` in the `email-template` directory. This will build the final HTML in the `dist/` directory. Copy everything within the `<body>` tags into the template on [Postmark](https://account.postmarkapp.com/servers/10274778/templates/30755957/edit). The ID of the Postmark template is currently hardcoded in the `postmark.go`.
