@@ -20,7 +20,7 @@ Run `go build` and execute the binary in a cron job, with the correct environmen
 
 A summary like that will land in your email inbox every time the script is executed.
 
-![screenshot of weekly summary email](docs/Screenshot 2023-02-12 at 16.59.26.png@2x.png)
+![screenshot of weekly summary email](docs/screenshot.png)
 
 ## Contributing
 
